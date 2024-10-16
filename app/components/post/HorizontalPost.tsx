@@ -8,7 +8,7 @@ export default function HorizontalPost({post} : HorizontalPostProps){
     return(
         <div className="relative grid justify-items-center bg-neutral-300 flex flex-col justify-center isolate overflow-hidden px-6 -mt-1 pb-12 lg:overflow-visible h-screen sm:h-full lg:px-0">
             <div className="mx-auto max-w-2xl  gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start ">
-                <div className="p-6 lg:top-4  ">
+                <div className="p-6 lg:top-4">
                 <Image
                     alt=""
                     width={post.width}
