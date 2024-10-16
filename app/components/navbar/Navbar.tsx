@@ -21,7 +21,7 @@ export default function Navbar() {
             <Link
               className={`${roboto.className} p-1.5 m-2 text-white rounded-lg  ${
                 pathname === '/' ? 'bg-orange-600' : ''
-              } hover:bg-orange-500`}
+              } hover:bg-orange-300`}
               href='/'
             >
               Fotos
@@ -29,7 +29,7 @@ export default function Navbar() {
             <Link
               className={`${roboto.className} p-1.5 m-2 text-white rounded-lg ${
                 pathname === '/about' ? 'bg-orange-600' : ''
-              } hover:bg-orange-500`}
+              } hover:bg-orange-300`}
               href='/about'
             >
               Photosgram
@@ -37,7 +37,7 @@ export default function Navbar() {
             <Link
               className={`${roboto.className} p-1.5 m-2 text-white rounded-lg ${
                 pathname === '/contact' ? 'bg-orange-600' : ''
-              } hover:bg-orange-500`}
+              } hover:bg-orange-300`}
               href='/contact'
             >
               Contacto
