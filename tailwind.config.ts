@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+const defaultTheme = require('tailwindcss/defaultTheme')
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+      sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+    },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -15,5 +18,6 @@ const config: Config = {
     },
   },
   plugins: [],
+  
 };
 export default config;
