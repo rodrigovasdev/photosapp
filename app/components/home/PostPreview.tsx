@@ -20,7 +20,6 @@ export default function PostPreview({post} : PostPreviewProps) {
           />
           <div className="p-4">
             <h2 className="text-2xl font-bold">{post.user.name}</h2>
-            <p className="text-gray-600 mt-2">{post.description}</p>
             <div className="mt-4 flex justify-between items-center">
               <span className="text-gray-700 font-semibold">{post.likes} Likes</span>
             </div>

@@ -3,7 +3,6 @@ import { MapPinIcon,CameraIcon,ChatBubbleBottomCenterIcon,HeartIcon } from '@her
 import Image from 'next/image';
 interface ProfileCardProps {
     post: Post;
-   
   }
 export default function PostProfileCard ({post} : ProfileCardProps){
 
