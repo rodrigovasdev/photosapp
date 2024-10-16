@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react';
 import HorizontalPost from './HorizontalPost';
 import VerticalPost from './VerticalPost';
 import BackButton from '../BackButton';
+import { Post } from '@/app/types/post';
 
-export default function PostDetail({post}: any){
+interface PostDetailProps {
+  post: Post;
+}
+export default function PostDetail({post}: PostDetailProps){
     const [isHorizontal, setIsHorizontal] = useState(false);
     useEffect(() => {
       const image = new Image();

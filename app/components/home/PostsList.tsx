@@ -1,19 +1,7 @@
 import PostPreview from './PostPreview';
 import { getPosts} from '../../services/api';
+import {Post} from '../../types/post'
 
-interface Post {
-  id: string;
-  description: string;
-  likes: number;
-  urls: {
-    small: string;
-    full: string;
-  };
-  user: {
-    name: string;
-    profile_image: string;
-  };
-}
 
 export default async function PostList() {
   const posts = await getPosts();

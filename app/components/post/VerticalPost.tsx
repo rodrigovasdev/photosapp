@@ -1,7 +1,10 @@
+import { Post } from '@/app/types/post';
 import PostProfileCard from './PostProfileCard'
 import Image from 'next/image';
-
-export default function VerticalPost({post} : any){
+interface VerticalPostProps {
+  post: Post;
+}
+export default function VerticalPost({post} : VerticalPostProps){
     return(
         <div className="relative bg-neutral-300 isolate overflow-hidden w-full  px-6 py-6 sm:py-24  lg:overflow-visible lg:px-0">
                 <div className="relative grid justify-items-center mx-auto grid max-w-2xl grid-cols-1 gap-y-16  lg:max-w-none lg:grid-cols-1 lg:items-start lg:gap-y-10">

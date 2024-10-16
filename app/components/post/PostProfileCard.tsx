@@ -1,7 +1,11 @@
+import { Post } from '@/app/types/post';
 import { MapPinIcon,CameraIcon,ChatBubbleBottomCenterIcon,HeartIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image';
-
-export default function PostProfileCard ({post} : any){
+interface ProfileCardProps {
+    post: Post;
+   
+  }
+export default function PostProfileCard ({post} : ProfileCardProps){
 
     return(
         <div className="px-8 sm:pl-10 bg-neutral-200 border-gray-500 grid justify-items-stretch rounded-lg lg:max-w-7xl py-5 ml-0 sm:ml-7 ">

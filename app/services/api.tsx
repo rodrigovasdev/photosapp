@@ -11,7 +11,7 @@ export const getPosts = async () => {
     }
   };
 
-export const getPostById = async (id: any) => {
+export const getPostById = async (id: string) => {
   try {
     const response = await fetch(`https://api.unsplash.com/photos/${id}?client_id=${process.env.API_ID}`);
     

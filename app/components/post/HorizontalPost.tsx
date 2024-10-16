@@ -1,7 +1,10 @@
+import { Post } from '@/app/types/post';
 import PostProfileCard from './PostProfileCard';
 import Image from 'next/image';
-
-export default function HorizontalPost({post} : any){
+interface HorizontalPostProps {
+    post: Post;
+  }
+export default function HorizontalPost({post} : HorizontalPostProps){
     return(
         <div className="relative grid justify-items-center bg-neutral-300 flex flex-col justify-center isolate overflow-hidden px-6 -mt-1 pb-12 lg:overflow-visible h-screen sm:h-full lg:px-0">
             <div className="mx-auto max-w-2xl  gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start ">
