@@ -2,7 +2,10 @@ import PostList from "./components/home/PostsList";
 
 export default function Home() {
   return (
-    <PostList></PostList>
+    <div className="bg-neutral-300 h-screen">
+      <PostList></PostList>
+    </div>
+    
   );
 }
 

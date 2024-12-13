@@ -1,4 +1,4 @@
-import { getPostById } from "@/app/services/api";
+import { getPhotoById } from "@/app/services/api";
 import PostDetail from "@/app/components/post/PostDetail";
 import { Suspense } from "react";
 import Loading from "./loading";
@@ -10,10 +10,17 @@ interface Params {
 }
 
 export default async function DetailPost({params}:Params) {
-    const post = await getPostById(params.id);
+  console.log(params.id)
+    const id = parseInt(params.id, 10); 
+    if (isNaN(id)) {
+      return <div>ID no válido</div>;
+    }
+    const post = await getPhotoById(id);
+    console.log('estos son los psot')
+    console.log(post)
     return (
       <Suspense fallback={<Loading></Loading>}>
-        <PostDetail post={post} ></PostDetail>
+        <PostDetail post={post.photo} ></PostDetail>
       </Suspense>     
       );  
 }

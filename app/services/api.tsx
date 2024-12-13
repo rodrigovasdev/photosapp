@@ -1,7 +1,7 @@
 
 export const getPosts = async () => {
     try {
-      const response = await fetch(`https://api.unsplash.com/photos?per_page=30&client_id=${process.env.API_ID}`);
+      const response = await fetch(`${process.env.BACKEND_URL}/album/all`);
       const posts = await response.json();
       return posts;
 
@@ -11,9 +11,9 @@ export const getPosts = async () => {
     }
   };
 
-export const getPostById = async (id: string) => {
+export const getAlbumById = async (id: string) => {
   try {
-    const response = await fetch(`https://api.unsplash.com/photos/${id}?client_id=${process.env.API_ID}`);
+    const response = await fetch(`${process.env.BACKEND_URL}/album/${id}`);
     
     if (!response.ok) {
       throw new Error('Failed to fetch post');
@@ -26,3 +26,19 @@ export const getPostById = async (id: string) => {
     throw error;
   }
 };
+
+export const getPhotoById = async (id: number) => {
+  try {
+    const response = await fetch(`${process.env.BACKEND_URL}/photo/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch post');
+    }
+
+    const post = await response.json();
+    return post;
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    throw error;
+  }
+};
+

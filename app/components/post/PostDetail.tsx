@@ -3,25 +3,27 @@ import { useEffect, useState } from 'react';
 import HorizontalPost from './HorizontalPost';
 import VerticalPost from './VerticalPost';
 import BackButton from '../BackButton';
-import { Post } from '@/app/types/post';
+import { Photo } from '@/app/types/post';
 
 interface PostDetailProps {
-  post: Post;
+  post: Photo;
 }
 export default function PostDetail({post}: PostDetailProps){
     const [isHorizontal, setIsHorizontal] = useState(false);
+    const urlAlbum = '/album/' + post.album_id;
+    console.log(urlAlbum)
     useEffect(() => {
       const image = new Image();
-      image.src = post.urls.full;
+      image.src = post.image_url;
       image.onload = () => {
         setIsHorizontal(image.width > image.height);
       };
-    }, [post.urls.full]);
+    }, [post.image_url]);
     
         if (isHorizontal){
             return (
               <div>
-                <BackButton></BackButton>
+                <BackButton href={urlAlbum}></BackButton>
                 <HorizontalPost post={post}></HorizontalPost>  
               </div>
                          
@@ -29,7 +31,7 @@ export default function PostDetail({post}: PostDetailProps){
         }else{
             return(
               <div className='sm:flex sm:flex-row'>
-                <BackButton></BackButton>
+                <BackButton href={urlAlbum}></BackButton>
                 <VerticalPost post={post}></VerticalPost>
               </div>               
               );
