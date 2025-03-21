@@ -22,7 +22,7 @@ export default function PostDetail({post}: PostDetailProps){
     
         if (isHorizontal){
             return (
-              <div>
+              <div className='h-full w-full bg-neutral-300'>
                 <BackButton href={urlAlbum}></BackButton>
                 <HorizontalPost post={post}></HorizontalPost>  
               </div>
@@ -30,7 +30,7 @@ export default function PostDetail({post}: PostDetailProps){
               );
         }else{
             return(
-              <div className='sm:flex sm:flex-row'>
+              <div className='sm:flex sm:flex-row h-full w-full bg-neutral-300'>
                 <BackButton href={urlAlbum}></BackButton>
                 <VerticalPost post={post}></VerticalPost>
               </div>               

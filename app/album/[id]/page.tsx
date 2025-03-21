@@ -14,7 +14,7 @@ export default async function Home({ params }: Params) {
   const { album, album_description, images } = await getAlbumById(params.id);
   
   return (
-  <div className="bg-neutral-300 pb-8 h-screen">
+  <div className="bg-neutral-300 pb-8 h-full md:h-screen">
     <BackButton href="/" />
 
     <div className="mx-5 my-5 pl-5">

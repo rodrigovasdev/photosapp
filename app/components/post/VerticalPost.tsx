@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import PostProfileCard from './PostProfileCard';
+import LoadingSpinner from '@/app/components/LoadingSpinner';
 
 interface VerticalPostProps {
   post: Photo;
 }
 export default function VerticalPost({post} : VerticalPostProps){
-  console.log(post)
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   useEffect(() => {
@@ -17,14 +18,19 @@ export default function VerticalPost({post} : VerticalPostProps){
     image.src = post.image_url;
     image.onload = () => {
       setDimensions({ width: image.width, height: image.height });
+      setLoading(false);
     };
   }, [post.image_url]);
-  console.log(post.next_photo_id)
-    return(
-        <div className="relative bg-neutral-300 isolate overflow-hidden w-full  px-6 py-6 sm:pt-44  lg:overflow-visible lg:px-0">
-          
+  
+    if (loading) {
+      return (<div className='h-scren w-full bg-neutral-300'>
+                <LoadingSpinner></LoadingSpinner>
+              </div>);
+    }else{
+      return(
+        <div className="relative bg-neutral-300 isolate overflow-hidden w-full h-max  px-6 py-6 sm:pt-44  lg:overflow-visible lg:px-0">
                 <div className="relative grid justify-items-center mx-auto grid max-w-2xl grid-cols-1 gap-y-16  lg:max-w-none lg:grid-cols-1 lg:items-start lg:gap-y-10">
-                  <div className='w-2/3'>
+                  <div className='w-full md:w-2/3'>
                     <PostProfileCard post={post}></PostProfileCard>
                   </div>
                      
@@ -37,7 +43,7 @@ export default function VerticalPost({post} : VerticalPostProps){
                         height={dimensions.height}
                         src= {post.image_url}
                         priority
-                        className=" max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 w-[20rem] sm:w-[57rem] "
+                        className="rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 w-full sm:w-[40rem] "
                       />
                       {/* Botón Anterior (a la izquierda, con la misma altura que la imagen) */ post.previous_photo_id &&
                         <button
@@ -59,4 +65,6 @@ export default function VerticalPost({post} : VerticalPostProps){
                 </div>
               </div>
             );
+    }
+    
 }
