@@ -4,7 +4,7 @@ interface LoadingSpinnerProps {
 
 export default function LoadingSpinner({ fullscreen = false }: LoadingSpinnerProps) {
     const containerClasses = fullscreen 
-        ? "fixed inset-0 flex flex-col justify-center items-center bg-neutral-300"
+        ? "fixed inset-0 flex flex-col justify-center items-center"
         : "flex flex-col items-center justify-center";
 
     return (
@@ -41,18 +41,13 @@ export default function LoadingSpinner({ fullscreen = false }: LoadingSpinnerPro
                 <div className="absolute inset-0 w-24 h-16 bg-amber-400 opacity-0 animate-flash"></div>
             </div>
             
-            {/* Loading Text */}
-            <div className={`mt-6 font-medium text-lg animate-pulse ${fullscreen ? 'text-stone-700' : 'text-white'}`}>
-                Cargando fotos...
-            </div>
-            
             {/* Loading Dots */}
-            <div className="flex space-x-1 mt-2">
-                <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
-                <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+            <div className="flex space-x-1 mt-3">
+                <div className="w-3 h-3 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                <div className="w-3 h-3 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                <div className="w-3 h-3 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
             </div>
         </div>
-    );
+    );          
 }
   

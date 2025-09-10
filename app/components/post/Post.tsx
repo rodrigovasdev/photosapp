@@ -70,7 +70,7 @@ export default function Post({ post }: PostProps) {
     return (
       <div className="rounded-xl items-center -mt-24 md:-mt-0 justify-center h-screen md:h-full">
         {(!imageLoaded || isNavigating) && (
-          <div className="flex items-center justify-center h-64 bg-gray-800 rounded-t-xl">
+          <div className="flex items-center justify-center h-64 rounded-t-xl">
             <LoadingSpinner />
           </div>
         )}
