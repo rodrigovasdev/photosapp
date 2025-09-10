@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import AlbumContent from "./AlbumContent";
 import AlbumLoading from "./AlbumLoading";
+import LoadingSpinner from "@/app/components/LoadingSpinner";
 
 interface Params {
   params: {
@@ -10,7 +11,7 @@ interface Params {
 
 export default function Home({ params }: Params) {
   return (
-    <Suspense fallback={<AlbumLoading albumId={params.id} />}>
+    <Suspense fallback={<LoadingSpinner fullscreen={true} />}>
       <AlbumContent albumId={params.id} />
     </Suspense>
   );
