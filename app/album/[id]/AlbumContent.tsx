@@ -12,10 +12,9 @@ export default async function AlbumContent({ albumId }: AlbumContentProps) {
   const { album, album_description, images } = await getAlbumById(albumId);
   
   return (
-    <div className="bg-neutral-300 pb-8 h-full md:h-screen">
-      <BackButton href="/" />
+    <div className="bg-neutral-300 py-20 h-full min-h-screen">
 
-      <div className="mx-5 my-5 pl-5">
+      <div className="mx-5 pl-5">
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-lg border border-stone-200 border-l-4 border-l-orange-500 hover:shadow-xl transition-shadow duration-300">
           <h1 className="text-3xl font-bold mb-2 text-stone-800">{album}</h1>
           <p className="text-stone-600 leading-relaxed">{album_description}</p>
