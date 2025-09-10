@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import PostListContent from "./components/home/PostListContent";
-import PostListLoading from "./components/home/PostListLoading";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 export default function Home() {
   return (
     <div className="bg-neutral-300 h-screen">
-      <Suspense fallback={<PostListLoading />}>
+      <Suspense fallback={<LoadingSpinner />}>
         <PostListContent />
       </Suspense>
     </div>
