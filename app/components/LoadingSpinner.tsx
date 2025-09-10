@@ -1,6 +1,14 @@
-export default function LoadingSpinner() {
+interface LoadingSpinnerProps {
+  fullscreen?: boolean;
+}
+
+export default function LoadingSpinner({ fullscreen = false }: LoadingSpinnerProps) {
+    const containerClasses = fullscreen 
+        ? "fixed inset-0 flex flex-col justify-center items-center bg-neutral-300"
+        : "flex flex-col items-center justify-center";
+
     return (
-        <div className="fixed inset-0 flex flex-col justify-center items-center bg-neutral-300">
+        <div className={containerClasses}>
             {/* Camera Animation Container */}
             <div className="relative">
                 {/* Camera Body - Main Rectangle */}
@@ -34,7 +42,7 @@ export default function LoadingSpinner() {
             </div>
             
             {/* Loading Text */}
-            <div className="mt-6 text-stone-700 font-medium text-lg animate-pulse">
+            <div className={`mt-6 font-medium text-lg animate-pulse ${fullscreen ? 'text-stone-700' : 'text-white'}`}>
                 Cargando fotos...
             </div>
             

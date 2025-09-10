@@ -5,7 +5,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 export default function Home() {
   return (
     <div className="bg-neutral-300 h-screen">
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<LoadingSpinner fullscreen={true} />}>
         <PostListContent />
       </Suspense>
     </div>

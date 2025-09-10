@@ -11,6 +11,7 @@ interface PostProps {
 
 export default function Post({ post }: PostProps) {
   const [loading, setLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const router = useRouter();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHorizontal, setIsHorizontal] = useState(false);
@@ -24,59 +25,61 @@ export default function Post({ post }: PostProps) {
       setDimensions({ width, height });
       setIsHorizontal(width > height); // Si es más ancha que alta, es horizontal
       setLoading(false);
+      console.log(`Image dimensions: ${width}x${height}, isHorizontal: ${width > height}`)
     };
   }, [post.image_url]);
 
-  if (loading) {
-    return (
-      <div className='h-screen w-full bg-neutral-300'>
-        <LoadingSpinner />
-      </div>
-    );
-  }
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+
+
 
   // Layout Horizontal (para imágenes landscape)
   if (isHorizontal) {
     return (
-      <div className="flex items-center -mt-24 md:-mt-0 p-0 md:p-24 justify-center h-screen md:h-full bg-neutral-300">
-        <div className="flex flex-col items-center gap-8"> 
-          <div className="relative inline-block">
-            <Image
-              alt=""
-              width={dimensions.width}
-              height={dimensions.height}
-              priority
-              src={post.image_url}
-              className="rounded-xl bg-gray-900 shadow-xl ring-gray-400/10"
-            />
+      <div className="rounded-xl items-center -mt-24 md:-mt-0 justify-center h-screen md:h-full">
+        {!imageLoaded && (
+          <div className="flex items-center justify-center h-64 bg-gray-800 rounded-t-xl">
+            <LoadingSpinner />
           </div>
-    
-          <div className="w-full px-5 md:px-0 md:w-2/3">
-            <PostProfileCard 
-              post={post}
-              showNavigation={true}
-              onPreviousClick={post.previous_photo_id ? () => router.push(`/photo/${post.previous_photo_id}`) : undefined}
-              onNextClick={post.next_photo_id ? () => router.push(`/photo/${post.next_photo_id}`) : undefined}
-            />
-          </div>
-        </div>
+        )}
+        <Image
+            alt=""
+            width={800}
+            height={dimensions.height}
+            priority
+            src={post.image_url}
+            onLoad={handleImageLoad}
+            className={`rounded-t-xl shadow-xl ring-gray-400/10 ${!imageLoaded ? 'hidden' : ''}`}
+        />
+        <PostProfileCard 
+            post={post}
+            showNavigation={true}
+            onPreviousClick={post.previous_photo_id ? () => router.push(`/photo/${post.previous_photo_id}`) : undefined}
+            onNextClick={post.next_photo_id ? () => router.push(`/photo/${post.next_photo_id}`) : undefined}
+        />
       </div>
     );
   }
 
   // Layout Vertical (para imágenes portrait o cuadradas)
   return (
-    <div className="relative bg-neutral-300 isolate overflow-hidden w-full h-max px-6 py-6 sm:pt-44 lg:overflow-visible lg:px-0">
-      <div className="relative grid justify-items-center mx-auto max-w-2xl grid-cols-1 gap-y-16">
-        <div className='mr-12 -mt-12 pl-12 sm:pl-1 sm:ml-12 sm:p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden'>
-          <div className="relative inline-block">
+      <div className="rounded-xl relative grid justify-items-center mx-auto max-w-2xl">
+            {!imageLoaded && (
+              <div className="flex items-center justify-center h-96 w-full rounded-t-xl">
+                <LoadingSpinner />
+              </div>
+            )}
             <Image
               alt=""
               width={dimensions.width}
               height={dimensions.height}
               src={post.image_url}
               priority
-              className="rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 w-full sm:w-[40rem]"
+              onLoad={handleImageLoad}
+              className={`rounded-t-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 w-full ${!imageLoaded ? 'hidden' : ''}`}
             />
             <PostProfileCard 
               post={post}
@@ -84,9 +87,6 @@ export default function Post({ post }: PostProps) {
               onPreviousClick={post.previous_photo_id ? () => router.push(`/photo/${post.previous_photo_id}`) : undefined}
               onNextClick={post.next_photo_id ? () => router.push(`/photo/${post.next_photo_id}`) : undefined}
             />
-          </div>
-        </div> 
       </div>
-    </div>
   );
 }
