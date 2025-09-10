@@ -1,7 +1,6 @@
 import { Photo } from '@/app/types/post';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import PostProfileCard from './PostProfileCard';
 import LoadingSpinner from '@/app/components/LoadingSpinner';
 import { getPhotoById } from '@/app/services/api';
@@ -15,7 +14,6 @@ export default function Post({ post }: PostProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentPost, setCurrentPost] = useState<Photo>(post);
   const [isNavigating, setIsNavigating] = useState(false);
-  const router = useRouter();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHorizontal, setIsHorizontal] = useState(false);
 

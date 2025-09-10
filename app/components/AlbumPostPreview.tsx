@@ -1,13 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { AlbumImage } from '@/app/types/post';
 import { getPhotoById } from '@/app/services/api';
 import Post from './post/Post';
 import LoadingSpinner from './LoadingSpinner';
-import { XMarkIcon } from '@heroicons/react/20/solid';
 
 interface PostPreviewProps {
   post: AlbumImage;
@@ -19,7 +17,6 @@ export default function AlbumPostPreview({ post }: PostPreviewProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
-  const router = useRouter();
 
   // Cerrar modal con Escape
   useEffect(() => {
