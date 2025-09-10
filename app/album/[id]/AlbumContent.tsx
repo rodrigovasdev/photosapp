@@ -1,5 +1,4 @@
 import AlbumPostPreview from "@/app/components/AlbumPostPreview";
-import BackButton from "@/app/components/BackButton";
 import { getAlbumById } from "@/app/services/api";
 import { AlbumImage } from "@/app/types/post";
 
