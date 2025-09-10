@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import AlbumContent from "./AlbumContent";
-import AlbumLoading from "./AlbumLoading";
 import LoadingSpinner from "@/app/components/LoadingSpinner";
 
 interface Params {
