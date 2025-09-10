@@ -11,7 +11,7 @@ export default async function AlbumContent({ albumId }: AlbumContentProps) {
   const { album, album_description, images } = await getAlbumById(albumId);
   
   return (
-    <div className="bg-neutral-300 py-20 h-full min-h-screen">
+    <div className="bg-neutral-300 pt-40 h-full min-h-screen">
 
       <div className="mx-5 pl-5">
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-lg border border-stone-200 border-l-4 border-l-orange-500 hover:shadow-xl transition-shadow duration-300">
