@@ -1,11 +1,14 @@
-import PostList from "./components/home/PostsList";
+import { Suspense } from "react";
+import PostListContent from "./components/home/PostListContent";
+import PostListLoading from "./components/home/PostListLoading";
 
 export default function Home() {
   return (
     <div className="bg-neutral-300 h-screen">
-      <PostList></PostList>
+      <Suspense fallback={<PostListLoading />}>
+        <PostListContent />
+      </Suspense>
     </div>
-    
   );
 }
 

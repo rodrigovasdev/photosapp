@@ -23,3 +23,17 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Camera Flash Animation */
+@keyframes flash {
+  0%, 90% {
+    opacity: 0;
+  }
+  5%, 15% {
+    opacity: 0.8;
+  }
+}
+
+.animate-flash {
+  animation: flash 2s infinite;
+}
