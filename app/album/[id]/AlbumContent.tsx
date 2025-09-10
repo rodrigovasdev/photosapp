@@ -16,9 +16,10 @@ export default async function AlbumContent({ albumId }: AlbumContentProps) {
       <BackButton href="/" />
 
       <div className="mx-5 my-5 pl-5">
-        <div className="bg-stone-600 shadow-lg rounded-lg p-6 max-w-lg">
-          <h1 className="text-3xl font-bold mb-2 text-white">{album}</h1>
-          <p className="text-gray-100">{album_description}</p>
+        <div className="bg-white shadow-lg rounded-lg p-6 max-w-lg border border-stone-200 border-l-4 border-l-orange-500 hover:shadow-xl transition-shadow duration-300">
+          <h1 className="text-3xl font-bold mb-2 text-stone-800">{album}</h1>
+          <p className="text-stone-600 leading-relaxed">{album_description}</p>
+          <div className="mt-4 w-12 h-1 bg-gradient-to-r from-orange-500 to-amber-400 rounded-full"></div>
         </div>
       </div>
 
