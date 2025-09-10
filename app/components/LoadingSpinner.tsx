@@ -1,10 +1,11 @@
 interface LoadingSpinnerProps {
   fullscreen?: boolean;
+  bg?: string;
 }
 
-export default function LoadingSpinner({ fullscreen = false }: LoadingSpinnerProps) {
+export default function LoadingSpinner({ fullscreen = false, bg }: LoadingSpinnerProps) {
     const containerClasses = fullscreen 
-        ? "fixed inset-0 flex flex-col justify-center items-center"
+        ? `fixed inset-0 flex flex-col justify-center items-center ${bg}`
         : "flex flex-col items-center justify-center";
 
     return (

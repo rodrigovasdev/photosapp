@@ -10,7 +10,7 @@ interface Params {
 
 export default function Home({ params }: Params) {
   return (
-    <Suspense fallback={<LoadingSpinner fullscreen={true} />}>
+    <Suspense fallback={<LoadingSpinner bg="bg-neutral-300" fullscreen={true} />}>
       <AlbumContent albumId={params.id} />
     </Suspense>
   );
