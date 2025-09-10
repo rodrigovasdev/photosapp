@@ -1,7 +1,7 @@
 
 export const getPosts = async () => {
     try {
-      const response = await fetch(`$${process.env.BACKEND_URL}/album/all`, {
+      const response = await fetch(`${process.env.BACKEND_URL}/album/all`, {
         method: 'GET',
         mode: 'cors',
         headers: {
