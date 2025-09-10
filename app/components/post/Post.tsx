@@ -7,9 +7,10 @@ import { getPhotoById } from '@/app/services/api';
 
 interface PostProps {
   post: Photo;
+  onClose?: () => void;
 }
 
-export default function Post({ post }: PostProps) {
+export default function Post({ post, onClose }: PostProps) {
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentPost, setCurrentPost] = useState<Photo>(post);
@@ -68,7 +69,20 @@ export default function Post({ post }: PostProps) {
   // Layout Horizontal (para imágenes landscape)
   if (isHorizontal) {
     return (
-      <div className="rounded-xl items-center -mt-24 md:-mt-0 justify-center h-screen md:h-full">
+      <div className="rounded-xl items-center -mt-24 md:-mt-0 justify-center h-screen md:h-full relative">
+        {/* Close Button */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-10 bg-white bg-opacity-30 hover:bg-opacity-40 text-white rounded-full p-2 transition-colors"
+            aria-label="Close"
+          >
+            <svg className="h-6 w-6 font-semibold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+        
         {(!imageLoaded || isNavigating) && (
           <div className="flex items-center justify-center h-64 rounded-t-xl">
             <LoadingSpinner />
@@ -96,6 +110,19 @@ export default function Post({ post }: PostProps) {
   // Layout Vertical (para imágenes portrait o cuadradas)
   return (
       <div className="rounded-xl relative grid justify-items-center mx-auto max-w-2xl">
+            {/* Close Button */}
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 z-10 bg-white bg-opacity-30 hover:bg-opacity-40 text-white rounded-full p-2 transition-colors"
+                aria-label="Close"
+              >
+                <svg className="h-6 w-6 font-semibold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+            
             {(!imageLoaded || isNavigating) && (
               <div className="flex items-center justify-center h-96 w-full rounded-t-xl">
                 <LoadingSpinner />

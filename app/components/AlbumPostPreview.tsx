@@ -111,19 +111,6 @@ export default function AlbumPostPreview({ post }: PostPreviewProps) {
           onClick={handleBackdropClick}
         >
           <div className="relative max-w-6xl max-h-[95vh] rounded-xl overflow-hidden">
-            {/* Close Button */}
-            { isLoading? null :
-              <button
-                onClick={handleClose}
-                className="absolute top-4 right-4 z-10 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition-colors"
-                aria-label="Close"
-              >
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            }
-
             {/* Content */}
             <div className="overflow-y-auto max-h-[95vh]">
               {isLoading ? (
@@ -144,7 +131,7 @@ export default function AlbumPostPreview({ post }: PostPreviewProps) {
                   </button>
                 </div>
               ) : photoData ? (
-                <Post post={photoData} />
+                <Post post={photoData} onClose={handleClose} />
               ) : (
                 <div className="flex items-center justify-center p-8">
                   <span className="text-white">No se pudo cargar la foto</span>
