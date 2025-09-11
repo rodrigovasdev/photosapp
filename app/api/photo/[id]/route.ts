@@ -8,7 +8,7 @@ export async function GET(
     const id = params.id;
     
     const response = await fetch(
-      `https://photosgram-backend-production.up.railway.app/photo/${id}`,
+      `${process.env.BACKEND_URL}/photo/${id}`,
       {
         method: 'GET',
         headers: {
